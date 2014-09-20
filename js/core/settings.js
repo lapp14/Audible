@@ -1,0 +1,3 @@
+var settings = {
+	displayTab: true	
+};
