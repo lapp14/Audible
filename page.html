@@ -6,16 +6,17 @@
 		
 		<link href='http://fonts.googleapis.com/css?family=Lobster|Crimson+Text|Audiowide' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/style.css">
+
 		
 		<script src="js/jquery-1.11.1.js"></script>
-		<script src="js/core/dim.js"></script>
-		<script src="js/core/settings.js"></script>
-		<script src="js/core/canvasDrawing.js"></script>
-
+		
+		 <!--
 		/** google's canvg **/
 		<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
 		<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/StackBlur.js"></script>
 		<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
+		-->
+
 	</head>
 	
 	<body onresize="resizeCanvas()">
@@ -32,128 +33,51 @@
 			</div>
 			
 			<div class="body row scroll-y scroll-x" id="canvasDiv">
-				<canvas id="songCanvas" ></canvas>
+				<canvas id="songCanvas"></canvas>
+
+
+				<!--
+				<h2>Song Title</h2>
+
+				<span class="musicFont" id="song">
+				</span>
+
+				<span class="musicFont">
+					@#$%^&*()_+QWERTYU
+
+					<br/>
+
+					IOP{}|ASDFGHJKL:"Z
+					<br/>
+					XCVBNM<>?
+					<br/>
+					`
+					<br/>
+					
+					1234567890-=
+					<br/>
+					qwertyuiop[]\asdfg
+					<br/>
+					hjkl;'zxcvbnm,./~!
+				</span>
+				-->
+
 			</div>
 			
 			<div class="footer row">
 				<span id="footerLabel">Footer</span>
 			</div>
-	<script>		
 
-	start();
-		
-
-	function start(){	
-		draw.setCanvas(document.getElementById("songCanvas"));
-		draw.setContext("2d");
-		resizeCanvas();
-	}
-		
-	function resizeCanvas(){
-
-		if(dim.yOffset > dim.songPixelHeight)
-			dim.songPixelHeight = dim.yOffset;
-
-		dim.yOffset = 0;
-
-		var canvas = draw.getCanvas();
-
-		if(dim.songPixelHeight > $("#canvasDiv").height()) {
-			draw.setCanvasHeight(dim.songPixelHeight);
-		} else {
-			draw.setCanvasHeight($("#canvasDiv").height());
-		}
-		
-		canvas.width  = canvas.offsetWidth;
-		canvas.height = canvas.offsetHeight;
-
-		//set dimensions
-		dim.canvasHeight = canvas.height
-		dim.canvasWidth = canvas.width
-		dim.canvasCenter = canvas.width / 2;
-				
-		drawSong();
-
-	}
-	
-	function drawSong(){
-		drawHeader();
-		drawStaff();
-
-		drawStaff();
-		drawTimeSignature('4', '4');
-		draw.textMusicCenter('aSuhEihjweMN', 70, 60, 60);
-
-	}
-
-	function drawHeader(){
-
-		dim.yOffset += 40;
-		draw.textCenter('Song Title', 30, dim.canvasCenter, dim.yOffset);
-		dim.yOffset += 28
-		draw.textCenter('Artist', 18, dim.canvasCenter, dim.yOffset);
-		dim.yOffset += 28
-		draw.textCenter('Album', 18, dim.canvasCenter, dim.yOffset);
-		dim.yOffset += 18;
-	}
-
-	function drawTimeSignature(upper, lower){
-		draw.translate(30, 128);
-		draw.textBoldCenter(upper, 40, 30, 30);
-		draw.textBoldCenter(lower, 40, 30, 56);
-
-	}
-
-	function drawStaff(){
-	
-		var x1 = dim.getSideMargin();
-		var y1 = dim.getTopMargin() + dim.yOffset;
-
-		var x2 = draw.getCanvas().width - dim.getSideMargin();
-		var y2 = dim.getTopMargin() + dim.yOffset;
-
-		draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-		dim.yOffset += dim.staffSpacing;
-		draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-		dim.yOffset += dim.staffSpacing;
-		draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-		dim.yOffset += dim.staffSpacing;
-		draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-		dim.yOffset += dim.staffSpacing;
-		draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-
-		draw.line(x1, y1, x1, y2 + 4 * dim.staffSpacing);
-		draw.line(x2, y1, x2, y2 + 4 * dim.staffSpacing);
-
-		dim.yOffset += 8 * dim.staffSpacing;
-
-		if(settings.displayTab){
-			x1 = dim.getSideMargin();
-			y1 = dim.getTopMargin() + dim.yOffset;
-
-			x2 = draw.getCanvas().width - dim.getSideMargin();
-			y2 = dim.getTopMargin() + dim.yOffset;
-
-			draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-			dim.yOffset += dim.staffSpacing;
-			draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-			dim.yOffset += dim.staffSpacing;
-			draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-			dim.yOffset += dim.staffSpacing;
-			draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-			dim.yOffset += dim.staffSpacing;
-			draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-			dim.yOffset += dim.staffSpacing;
-			draw.line(x1, dim.getTopMargin() + dim.yOffset, draw.getCanvas().width - x1, dim.getTopMargin() + dim.yOffset);
-
-			draw.line(x1, y1, x1, y2 + 5 * dim.staffSpacing);
-			draw.line(x2, y1, x2, y2 + 5 * dim.staffSpacing);
-			dim.yOffset += 8 * dim.staffSpacing;
-
-		}
 
 		
-	}
-	</script>
+		<script src="js/core/dim.js"></script>
+		<script src="js/core/settings.js"></script>
+		<script src="js/core/canvasDrawing.js"></script>
+		<script src="js/core/music.js"></script>
+		<script>
+
+				start();
+
+		</script>
 </body>
 </html>	

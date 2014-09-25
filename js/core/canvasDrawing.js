@@ -3,6 +3,17 @@ var draw = {
 		canvas.style.width  = '100%';
 		canvas.style.height = '1000px';
 		this.canvas = canvas;
+
+		this.canvas.addEventListener('click', function(event){
+			var rect = canvas.getBoundingClientRect();
+			var x = event.pageX - rect.left,
+				y = event.pageY - rect.top;
+
+			alert(x + ' ' + y) ;
+
+
+		}, false);
+
 		return this.canvas;
 	},
 
@@ -51,6 +62,12 @@ var draw = {
 		this.context.fillText(text, x, y);
 	},
 
+	textBold: function(text, size, x, y){
+		this.context.textAlign = 'left';
+		this.context.font = 'bold ' + size + 'px Crimson Text, serif';
+		this.context.fillText(text, x, y);
+	},
+
 	textBoldCenter: function(text, size, x, y){
 		this.context.textAlign = 'center';
 		this.context.font = 'bold ' + size + 'px Crimson Text, serif';
@@ -59,5 +76,6 @@ var draw = {
 
 	translate: function(x, y){
 		this.context.translate(x, y);
-	}
+	},
+
 };
