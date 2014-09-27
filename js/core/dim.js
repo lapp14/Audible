@@ -12,6 +12,7 @@ var dim = {
 	yOffset: 0,
 
 	staffSpacing: 12,
+	sizeDefault: 12,
 
 	getSideMargin: function(){
 		return this.marginSide;

@@ -9,7 +9,7 @@ var draw = {
 			var x = event.pageX - rect.left,
 				y = event.pageY - rect.top;
 
-			alert(x + ' ' + y) ;
+			//alert(x + ' ' + y) ;
 
 
 		}, false);
@@ -78,4 +78,43 @@ var draw = {
 		this.context.translate(x, y);
 	},
 
+	drawNote: function(note, size, x, y){
+		var rect = this.canvas.getBoundingClientRect();
+		this.context.save();
+		this.context.scale(dim.staffSpacing / 12, dim.staffSpacing / 12);
+		this.context.translate(x, y);
+		this.context.drawSvg(note);
+		this.context.restore();
+
+	},
+
+	noteHalf: function(size, x, y){
+		this.drawNote('svg/note_half.svg', size, x, y);
+	},
+
+	noteHalfInv: function(size, x, y){
+		this.drawNote('svg/note_half_inv.svg', size, x, y + 35);
+	},
+
+	noteQuarter: function(size, x, y){
+		this.drawNote('svg/note_quarter.svg', size, x, y);
+	},
+
+	noteQuarterInv: function(size, x, y){
+		this.drawNote('svg/note_quarter_inv.svg', size, x, y + 35);
+	},
+
+	noteWhole: function(size, x, y){
+		this.drawNote('svg/note_whole.svg', size, x, y);
+	},
+
+
+	drawTimeSignature: function(upper, lower, x, y){
+		this.context.save();
+		this.context.translate(x, y);
+		this.textBold(upper, 40, 30, 30);
+		this.textBold(lower, 40, 30, 56);
+		this.context.restore();
+
+	}
 };

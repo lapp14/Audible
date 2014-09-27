@@ -37,13 +37,39 @@ function resizeCanvas(){
 function drawSong(){
 	drawHeader();
 	drawStaff();
-	drawStaff();
-	drawStaff();
-
-	drawStaff();
-	drawTimeSignature('4', '4', 20, 128);
+	draw.drawTimeSignature('4', '4', 20, 128);
 	drawTrebleCleff(60, 128);
-	//draw.textMusicCenter('aSuhEihjweMN', 70, 60, 60);
+
+	draw.noteHalf(55, 100, 100);
+	draw.noteHalfInv(55, 140, 100);
+
+	draw.noteQuarter(55, 180, 100);
+	draw.noteQuarterInv(55, 240, 100);
+
+	//* valid whole notes */
+	draw.noteWhole(55, 290, 135);
+	draw.noteWhole(55, 290, 147);
+	draw.noteWhole(55, 290, 159);
+	draw.noteWhole(55, 290, 171);
+
+	draw.noteWhole(55, 380, 129);
+	draw.noteWhole(55, 380, 141);
+	draw.noteWhole(55, 380, 153);
+	draw.noteWhole(55, 380, 165);
+	draw.noteWhole(55, 380, 177);
+
+	/***quarter notes **/
+	draw.noteQuarterInv(55, 460, 100);
+	draw.noteQuarterInv(55, 460, 112);
+	draw.noteQuarter(55, 480, 124);
+	draw.noteQuarter(55, 480, 136);
+
+
+	draw.noteQuarterInv(55, 520, 94);
+	draw.noteQuarterInv(55, 520, 106);
+	draw.noteQuarter(55, 560, 118);
+	draw.noteQuarter(55, 560, 130);
+	draw.noteQuarter(55, 560, 142);
 
 }
 
@@ -58,15 +84,9 @@ function drawHeader(){
 }
 
 function drawTrebleCleff(x, y){
-	
-}
-
-function drawTimeSignature(upper, lower, x, y){
-	draw.translate(x, y);
-	draw.textBold(upper, 40, 30, 30);
-	draw.textBold(lower, 40, 30, 56);
 
 }
+
 
 function drawStaff(){
 

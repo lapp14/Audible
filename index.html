@@ -1,17 +1,27 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>pixi.js example 1</title>
+	<title>YO</title>
 	
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	
-	<script src="js/jquery-1.11.1.js"></script>
-	<script src="js/pixi.js"></script>
+	<script src="js/jquery-1.11.1.js"></script>	
+		 
+	<!-- google's canvg -->
+	<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
+	<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/StackBlur.js"></script>
+	<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
 	
 </head>
 <body>
+	<canvas width="700" height="700"id="songCanvas"></canvas>
 
-	<script src="js/music.js"></script>
+	<script>
+		var c = document.getElementById('songCanvas');
+		var ctx = c.getContext('2d');
+		ctx.drawSvg('svg/note_half.svg', 55, 2);
+
+	</script>
 
 	</body>
 </html>

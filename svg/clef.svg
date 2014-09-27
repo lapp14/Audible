@@ -10,25 +10,24 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
-   id="svg3033"
+   width="17"
+   height="44"
+   id="svg2"
    version="1.1"
-   inkscape:version="0.48.0 r9654"
-   sodipodi:docname="trebClef.svg">
-  <title
-     id="title3077">Treble Clef</title>
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="New document 1">
   <defs
-     id="defs3035">
+     id="defs4">
     <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3013-7"
-       id="linearGradient3776"
-       x1="598.60864"
-       y1="490.82504"
-       x2="881.5011"
+       gradientTransform="translate(-368.00764,35.356037)"
        y2="490.82504"
-       gradientUnits="userSpaceOnUse" />
+       x2="881.5011"
+       y1="490.82504"
+       x1="598.60864"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient3793"
+       xlink:href="#linearGradient3013-7"
+       inkscape:collect="always" />
     <linearGradient
        id="linearGradient3013-7">
       <stop
@@ -41,15 +40,25 @@
          offset="1" />
     </linearGradient>
     <linearGradient
-       gradientTransform="translate(-368.00764,35.356037)"
        y2="490.82504"
        x2="881.5011"
        y1="490.82504"
        x1="598.60864"
+       gradientTransform="translate(-368.00764,35.356038)"
        gradientUnits="userSpaceOnUse"
-       id="linearGradient3793"
+       id="linearGradient3038"
        xlink:href="#linearGradient3013-7"
        inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3013-7"
+       id="linearGradient3019"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-368.00769,1043.7183)"
+       x1="598.60864"
+       y1="490.82504"
+       x2="881.5011"
+       y2="490.82504" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -58,54 +67,39 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.26488883"
-     inkscape:cx="375"
-     inkscape:cy="520"
+     inkscape:zoom="11.2"
+     inkscape:cx="9.4732014"
+     inkscape:cy="14.294392"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="919"
-     inkscape:window-height="755"
-     inkscape:window-x="2021"
-     inkscape:window-y="84"
-     inkscape:window-maximized="0" />
+     inkscape:window-width="1680"
+     inkscape:window-height="988"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
   <metadata
-     id="metadata3038">
+     id="metadata7">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>Treble Clef</dc:title>
-        <dc:creator>
-          <cc:Agent>
-            <dc:title>Jaschon</dc:title>
-          </cc:Agent>
-        </dc:creator>
-        <cc:license
-           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:title></dc:title>
       </cc:Work>
-      <cc:License
-         rdf:about="http://creativecommons.org/licenses/publicdomain/">
-        <cc:permits
-           rdf:resource="http://creativecommons.org/ns#Reproduction" />
-        <cc:permits
-           rdf:resource="http://creativecommons.org/ns#Distribution" />
-        <cc:permits
-           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
-      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(0,-1008.3622)">
     <path
        clip-rule="evenodd"
-       d="m 278.89443,840.50155 c 0,23.81128 27.14446,51.13314 48.1934,55.10814 0,0 22.50833,5.61337 41.03037,1.12235 3.34609,0.75146 59.49757,-9.54161 60.61992,-84.75534 l -11.84275,-91.53621 c 7.89194,-1.34811 33.64315,-13.76333 41.59154,-18.4785 21.81169,-12.94253 31.35491,-31.6355 39.85157,-45.46494 9.5416,-20.76836 15.15498,-34.94612 15.15498,-57.55603 0,-57.18514 -46.34057,-103.537 -103.50475,-103.537 -8.23865,0 -16.24347,0.97722 -23.93384,2.7962 l -10.21566,-73.46408 c 38.68406,-43.00577 77.89705,-95.86921 91.06534,-144.30935 12.91028,-63.9886 6.73573,-107.20722 -27.50408,-125.73087 -31.43232,-7.29691 -69.58907,35.64274 -92.05224,97.66561 -14.59381,33.11584 3.99757,96.38523 12.3491,122.3622 -61.52781,58.98316 -122.74275,101.28262 -129.0963,203.50537 0,80.05307 64.87388,144.93825 144.89309,144.93825 7.64521,0 20.2749,0.179 34.64295,-1.68352 l 6.7583,91.41204 c 0,0 2.59302,66.86221 -48.2934,75.92165 -20.19589,3.59282 -39.67419,7.75649 -34.07049,-5.61176 15.73873,-8.19672 34.07049,-21.26342 34.07049,-42.70421 0,-26.68328 -20.08462,-48.31598 -44.84894,-48.31598 -24.77399,0 -44.8586,21.6327 -44.8586,48.31598 z m 90.97502,-409.14096 9.53032,68.63443 c -42.22044,13.05702 -72.90129,52.42643 -72.90129,98.946 0,52.64896 62.94525,77.20203 61.23915,64.70619 -24.54017,-10.58656 -33.63348,-22.48575 -33.63348,-50.91061 0,-32.12895 21.95843,-59.1154 51.67336,-66.80577 l 22.66474,163.40547 c -5.09735,1.38036 -10.59784,2.54787 -16.55792,3.47993 -86.24858,-1.72868 -126.78709,-47.63224 -126.78709,-127.6837 0.002,-44.84571 52.80859,-96.57551 104.77221,-153.77194 z m 45.19726,275.96805 -22.59863,-162.77656 c 3.45736,-0.5386 7.01632,-0.83047 10.63171,-0.83047 38.10031,0 68.99403,30.905 68.99403,69.0166 -0.76275,30.66956 -2.22374,76.33608 -57.02711,94.59043 z M 366.99746,364.62256 c -15.54845,-52.45868 -1.49325,-78.60336 7.63231,-98.69927 21.56497,-47.45164 40.53692,-64.70619 59.85718,-80.1079 25.12392,9.85606 13.78429,80.1079 10.01248,80.1079 -11.83146,41.4464 -54.27605,74.39454 -77.50197,98.69927 z"
+       d="m 2.9535488,1048.6956 c 0,1.3894 1.5838788,2.9836 2.8120823,3.2155 0,0 1.3133624,0.3276 2.3941258,0.065 0.1952414,0.044 3.4716851,-0.5568 3.5371721,-4.9455 l -0.691024,-5.341 c 0.460493,-0.078 1.963074,-0.8032 2.426865,-1.0784 1.272714,-0.7551 1.829558,-1.8459 2.32534,-2.6529 0.556753,-1.2119 0.884293,-2.0391 0.884293,-3.3584 0,-3.3366 -2.703973,-6.0413 -6.039505,-6.0413 -0.480724,0 -0.9478043,0.057 -1.396535,0.1631 l -0.5960848,-4.2866 c 2.2572118,-2.5094 4.5452948,-5.594 5.3136598,-8.4205 0.753317,-3.7336 0.39303,-6.2554 -1.60486,-7.3364 -1.834077,-0.4256 -4.0605242,2.0797 -5.3712481,5.6988 -0.8515528,1.9324 0.2332568,5.6241 0.7205689,7.1399 -3.5901475,3.4416 -7.16204273,5.9099 -7.53276949,11.8744 0,4.6711 3.78538909,8.4573 8.45450929,8.4573 0.4461024,0 1.1830403,0.011 2.0214194,-0.098 l 0.394347,5.3339 c 0,0 0.151303,3.9014 -2.8179204,4.4301 -1.1784336,0.2095 -2.3149884,0.4525 -1.9880126,-0.3275 0.9183527,-0.4783 1.9880126,-1.2407 1.9880126,-2.4918 0,-1.557 -1.171938,-2.8192 -2.616937,-2.8192 -1.4455608,0 -2.6174988,1.2622 -2.6174988,2.8192 z m 5.3083933,-23.8735 0.5560948,4.0049 c -2.4635665,0.7619 -4.2537903,3.059 -4.2537903,5.7736 0,3.0719 3.6728561,4.5046 3.5733033,3.7754 -1.431922,-0.6177 -1.9625143,-1.3119 -1.9625143,-2.9706 0,-1.8747 1.2812766,-3.4493 3.015142,-3.898 l 1.3224864,9.5346 c -0.297428,0.081 -0.6183831,0.1487 -0.9661541,0.203 -5.0326061,-0.1018 -7.398029,-2.7793 -7.398029,-7.4503 1.174e-4,-2.6166 3.0813839,-5.6351 6.1134612,-8.9726 z m 2.6372609,16.1027 -1.3186327,-9.4979 c 0.2017366,-0.033 0.4094046,-0.049 0.6203627,-0.049 2.223152,0 4.025801,1.8032 4.025801,4.027 -0.0445,1.7896 -0.129756,4.4543 -3.327531,5.5194 z M 8.0943616,1020.928 c -0.9072543,-3.061 -0.087128,-4.5865 0.4453424,-5.7592 1.2583189,-2.7686 2.365333,-3.7756 3.492667,-4.6742 1.465983,0.5751 0.804319,4.6742 0.584231,4.6742 -0.690366,2.4184 -3.1670064,4.341 -4.5222404,5.7592 z"
        id="path11"
        inkscape:connector-curvature="0"
-       style="fill:url(#linearGradient3793);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
+       style="fill:url(#linearGradient3019);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.05835;stroke-opacity:1" />
   </g>
 </svg>
