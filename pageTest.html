@@ -20,66 +20,25 @@
 	</head>
 	
 	<body onresize="resizeCanvas()">
-			<div class="header row">
-				<div class="menuContainer">
-				Audible
-				</div>
-			</div>
 			
-			<div class="body col left">
-				<div class="menuContainer">
-					Left
-				</div>
-			</div>
-			
-			<div class="body row scroll-y scroll-x" id="canvasDiv">
-				<canvas id="songCanvas"></canvas>
-
-
-				<!--
-				<h2>Song Title</h2>
-
-				<span class="musicFont" id="song">
-				</span>
-
-				<span class="musicFont">
-					@#$%^&*()_+QWERTYU
-
-					<br/>
-
-					IOP{}|ASDFGHJKL:"Z
-					<br/>
-					XCVBNM<>?
-					<br/>
-					`
-					<br/>
-					
-					1234567890-=
-					<br/>
-					qwertyuiop[]\asdfg
-					<br/>
-					hjkl;'zxcvbnm,./~!
-				</span>
-				-->
-
-			</div>
-			
-			<div class="footer row">
-				<span id="footerLabel">Footer</span>
-			</div>
-
+		<canvas id="songCanvas"></canvas>
 
 		<script src="js/core/settings.js"></script>
 		<script src="js/core/dim.js"></script>
+		<script src="js/core/canvasDrawing.js"></script>
 		<script src="js/core/obj/objects.js"></script>
 		
-		<script src="js/core/canvasDrawing.js"></script>
 		<script src="js/core/music.js"></script>
 		<script>
 
-			start();															
-			var n = new Note('a', 4);
+			draw.setCanvas(document.getElementById("songCanvas"));
+			draw.setContext("2d");
+			resizeCanvas();
 
+			var staff = new Staff(10, 10, 500);
+			staff.drawStaff();
+			staff.drawStaff();
+			staff.drawStaff();
 		</script>
 </body>
 </html>	

@@ -1,6 +1,3 @@
-
-start();
-
 function start(){	
 	draw.setCanvas(document.getElementById("songCanvas"));
 	draw.setContext("2d");
@@ -30,12 +27,13 @@ function resizeCanvas(){
 	dim.canvasWidth = canvas.width
 	dim.canvasCenter = canvas.width / 2;
 			
-	drawSong();
+	//drawSong();
 
 }
 
 function drawSong(){
 	drawHeader();
+	drawStaff();
 	drawStaff();
 	draw.drawTimeSignature('4', '4', 20, 128);
 	drawTrebleCleff(60, 128);
