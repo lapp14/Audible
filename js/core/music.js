@@ -27,7 +27,16 @@ function resizeCanvas(){
 	dim.canvasWidth = canvas.width
 	dim.canvasCenter = canvas.width / 2;
 			
-	//drawSong();
+
+	//song		
+	var song = new Song();
+
+	for(var i = 0; i < 30; i++) {
+		var n = new Note('c', 'half', 4);
+		song.addItem(n);
+	}
+
+	song.drawSong();
 
 }
 

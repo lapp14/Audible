@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -35,10 +34,14 @@
 			draw.setContext("2d");
 			resizeCanvas();
 
-			var staff = new Staff(10, 10, 500);
-			staff.drawStaff();
-			staff.drawStaff();
-			staff.drawStaff();
+			var song = new Song();
+			var note = new Note('c', 'half', 4);
+			var note2 = new Note('c', 'half', 4);
+			
+			song.addItem(note);
+			song.addItem(note2);
+			song.drawSong();
+
 		</script>
 </body>
 </html>	

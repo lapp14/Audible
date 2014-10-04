@@ -1,3 +1,3 @@
 var settings = {
-	displayTab: false	
+	displayTab: true	
 };
