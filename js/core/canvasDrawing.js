@@ -112,8 +112,8 @@ var draw = {
 	drawTimeSignature: function(upper, lower, x, y){
 		this.context.save();
 		this.context.translate(x, y);
-		this.textBold(upper, 40, 30, 30);
-		this.textBold(lower, 40, 30, 56);
+		this.textBold(upper, 40, 0, 25);
+		this.textBold(lower, 40, 0, 50);
 		this.context.restore();
 
 	}

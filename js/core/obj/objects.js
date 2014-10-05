@@ -40,7 +40,7 @@ var Song = (function() {
 
 		currentStaff = this._musicStaves[0];
 
-		for(var i = 0; i < this._items.length; i++) {
+		for(var i = 0, len = this._items.length; i < len; i++) {
 
 			//add new staff if currentStaff is full
 			if(currentStaff.getCurrentNotePosition() > currentStaff.getWidth() - dim.staffPadding) {
@@ -56,11 +56,12 @@ var Song = (function() {
 			currentStaff.addItem(this.getItem(i));
 		}
 
-		for(var i = 0; i < this._musicStaves.length; i++) {
+		for(var i = 0, len = this._musicStaves.length; i < len; i++) {
 			this._musicStaves[i].drawStaff();
 
 		}
 
+		console.log("dim.songPixelHeight: " + dim.songPixelHeight);
 	};
 
 	return Song;
@@ -114,19 +115,26 @@ var Note = (function() {
 
 		switch(this._type) {
 			case 'whole':
-				break;
-
-			case 'half':
-				//add if for inverted notes
-				this._noteSvg = 'svg/note_half_inv.svg';
+				this._noteSvg = 'svg/note_whole';
 				this._notePadding = 85;
 				break;
 
+			case 'half':
+				this._noteSvg = 'svg/note_half';
+				this._notePadding = 85;
+				break;
 
 			//quarter
 			default:
+				this._noteSvg = 'svg/note_quarter';
+				this._notePadding = 85;
 				break;
 		}
+
+		if(type != 'whole' && octave > 4)
+			this._noteSvg += '_inv.svg';
+		else
+			this._noteSvg += '.svg';
 	};
 
 	Note.prototype.setPosition = function(Point) {
@@ -151,9 +159,29 @@ var Note = (function() {
 var TimeSignature = (function() {
 
 	//constructor
-	function TimeSignature() {
-
+	function TimeSignature(upper, lower) {
+		this._upper = upper;
+		this._lower = lower;
+		this._padding = 80;
 	};
+
+	TimeSignature.prototype.setPosition = function(Point) {
+		this._position = Point;
+	};
+
+	TimeSignature.prototype.getPosition = function() {
+		return this._position;
+	};
+
+	TimeSignature.prototype.getPadding = function() {
+		return this._padding;
+	};
+
+	TimeSignature.prototype.drawOnStaff = function() {	
+		draw.drawTimeSignature(this._upper, this._lower, this._position.getX(), this._position.getY());
+	};
+
+	return TimeSignature;
 
 })();
 
@@ -187,7 +215,11 @@ var Staff = (function() {
 	};
 
 	Staff.prototype.addItem = function(item) {
-		item.setPosition(new Point(this._currentNotePosition, 12));
+		if(item instanceof Note)
+			item.setPosition(new Point(this._currentNotePosition, 12));
+		else
+			item.setPosition(new Point(this._currentNotePosition, 0));
+
 		this._items[this._items.length] = item;
 
 		this._currentNotePosition += item.getPadding();
@@ -217,7 +249,7 @@ var Staff = (function() {
 		
 
 		// draw each note on the staff
-		for(var i = 0; i < this._items.length; i++){
+		for(var i = 0, len = this._items.length; i < len; i++){
 			this._items[i].drawOnStaff();
 		}
 	
