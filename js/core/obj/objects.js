@@ -1,3 +1,7 @@
+/* 
+ *	this should be changed to represent a cleff, treble, bass etc
+ *  so that the same notes are placed differently on bass and treble staves
+ */
 var Song = (function() {
 	//constructor
 	function Song(){
@@ -16,6 +20,73 @@ var Song = (function() {
 	};
 
 	Song.prototype.addItem = function(item) {
+
+		if(item instanceof Note) {
+			var letter = item._letter;
+			var octave = item._octave;
+			var padding = dim.notesOffStaffSpace;
+
+			switch(letter) {
+				case 'e':
+					if(octave == 5) {
+						item.setY(padding + 5);
+					} else {  //octave == 4
+						item.setY(padding + 48);
+					}
+
+					break;
+
+				case 'f':
+					if(octave == 5) {
+						item.setY(padding);
+					} else {  //octave == 4
+						item.setY(padding + 41);
+					}
+					break;
+
+				case 'g':
+					if(octave == 5) {
+						item.setY(padding - 6);
+					} else {  //octave == 4
+						item.setY(padding + 36);
+					}
+					break;
+
+				case 'a':
+					if(octave == 5) {
+						item._drawStaffLine = true;
+						item.setY(padding - 11);
+					} else {  //octave == 4
+						item.setY(padding + 29);
+					}
+					break;
+
+				case 'b':
+					//only octave 4 on treble staff
+					item.setY(padding + 24);
+					break;
+
+				case 'c':
+					if(octave == 5) {
+						item.setY(padding + 17);
+					} else { //octave == 4
+						item._drawStaffLine = true;
+						item.setY(padding + 59);
+					}
+					break;
+
+				case 'd':
+					if(octave == 5) {
+						item.setY(padding + 12);
+					} else { //octave == 4
+						item.setY(padding + 53);
+					}
+					break;
+			}
+
+
+		}
+
 		this._items[this._items.length] = item;
 	};
 
@@ -112,6 +183,9 @@ var Note = (function() {
 		this._letter = letter;
 		this._type = type;
 		this._octave = octave;
+		this._position = new Point(0, 0);
+		this._drawStaffLine = false;
+		this._isInverted = false;
 
 		switch(this._type) {
 			case 'whole':
@@ -131,14 +205,24 @@ var Note = (function() {
 				break;
 		}
 
-		if(type != 'whole' && octave > 4)
+		if(type != 'whole' && octave > 4) {
+			this._isInverted = true;
 			this._noteSvg += '_inv.svg';
-		else
+		} else {
 			this._noteSvg += '.svg';
+		}
 	};
 
 	Note.prototype.setPosition = function(Point) {
 		this._position = Point;
+	};
+
+	Note.prototype.setX = function(x) {
+		this._position.setX(x);
+	};
+
+	Note.prototype.setY = function(y) {
+		this._position.setY(y);
 	};
 
 	Note.prototype.getPosition = function() {
@@ -150,7 +234,13 @@ var Note = (function() {
 	};
 
 	Note.prototype.drawOnStaff = function() {	
-		draw.drawNote(this._noteSvg, 20, this._position.getX(), this._position.getY());
+		if(this._drawStaffLine) {
+			var p = this.getPosition();			
+
+			draw.line(p.getX() - 10, p.getY(), p.getX() + 25, p.getY());
+		}
+
+		draw.drawNote(this._noteSvg, this._position.getX(), this._position.getY());
 	};
 
 	return Note;
@@ -215,10 +305,12 @@ var Staff = (function() {
 	};
 
 	Staff.prototype.addItem = function(item) {
+
+		//REMOVE ALL POSITION CALCULATIONS
 		if(item instanceof Note)
-			item.setPosition(new Point(this._currentNotePosition, 12));
+			item.setX(this._currentNotePosition);
 		else
-			item.setPosition(new Point(this._currentNotePosition, 0));
+			item.setPosition(new Point(this._currentNotePosition, dim.notesOffStaffSpace));
 
 		this._items[this._items.length] = item;
 
@@ -231,7 +323,7 @@ var Staff = (function() {
 
 		var x1 = 0;
 		var x2 = this.getWidth();
-		var y = 0;
+		var y = dim.notesOffStaffSpace;
 
 		draw.line(x1, y, x2, y);
 		y += dim.staffSpacing;
@@ -243,8 +335,8 @@ var Staff = (function() {
 		y += dim.staffSpacing;
 		draw.line(x1, y, x2, y);
 
-		draw.line(x1, 0, x1, y);
-		draw.line(x2, 0, x2, y);
+		draw.line(x1, dim.notesOffStaffSpace, x1, y);
+		draw.line(x2, dim.notesOffStaffSpace, x2, y);
 
 		
 

@@ -1,6 +1,5 @@
 var song;
 
-
 function start(){	
 	draw.setCanvas(document.getElementById("songCanvas"));
 	draw.setContext("2d");		
@@ -11,10 +10,34 @@ function start(){
 	var timeSignature = new TimeSignature(4, 4);
 	song.addItem(timeSignature);
 
-	for(var i = 0; i < 40; i++) {
-		var n = new Note('c', 'whole', 4);
-		song.addItem(n);
-	}
+	song.addItem(new Note('c', 'half', 4));
+	song.addItem(new Note('d', 'half', 4));
+	song.addItem(new Note('e', 'half', 4));
+	song.addItem(new Note('f', 'quarter', 4));
+	song.addItem(new Note('g', 'half', 4));
+	song.addItem(new Note('a', 'quarter', 4));
+	song.addItem(new Note('b', 'half', 4));
+	song.addItem(new Note('c', 'quarter', 5));
+	song.addItem(new Note('d', 'quarter', 5));
+	song.addItem(new Note('e', 'quarter', 5));
+	song.addItem(new Note('f', 'quarter', 5));
+	song.addItem(new Note('g', 'quarter', 5));
+	song.addItem(new Note('a', 'quarter', 5));
+
+	song.addItem(new Note('c', 'whole', 4));
+	song.addItem(new Note('d', 'whole', 4));
+	song.addItem(new Note('e', 'whole', 4));
+	song.addItem(new Note('f', 'whole', 4));
+	song.addItem(new Note('g', 'whole', 4));
+	song.addItem(new Note('a', 'whole', 4));
+	song.addItem(new Note('b', 'whole', 4));
+	song.addItem(new Note('c', 'whole', 5));
+	song.addItem(new Note('d', 'whole', 5));
+	song.addItem(new Note('e', 'whole', 5));
+	song.addItem(new Note('f', 'whole', 5));
+	song.addItem(new Note('g', 'whole', 5));
+	song.addItem(new Note('a', 'whole', 5));
+
 
 	song.drawSong();
 	resizeCanvas();

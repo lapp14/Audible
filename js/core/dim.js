@@ -12,8 +12,13 @@ var dim = {
 	yOffset: 0,
 
 	staffSpacing: 12,
+	staffSpacingDefault: 12,
+
 	staffPadding: 30,
-	
+	staffPaddingDefault: 30,
+
+	notesOffStaffSpace: 20, //shifts staff down to leave room for notes above the staff (def: 20)
+
 	sizeDefault: 12,
 
 	getSideMargin: function(){

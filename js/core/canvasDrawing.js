@@ -78,35 +78,41 @@ var draw = {
 		this.context.translate(x, y);
 	},
 
-	drawNote: function(note, size, x, y){
+	drawNote: function(note, x, y){
 		var rect = this.canvas.getBoundingClientRect();
 		this.context.save();
 		this.context.scale(dim.staffSpacing / 12, dim.staffSpacing / 12);
-		this.context.translate(x, y);
+		
+		if(note.indexOf('whole') > -1 || note.indexOf('_inv') > -1) {
+			this.context.translate(x, y - 5);
+		} else { 
+			this.context.translate(x, y - 39);
+		}
+
 		this.context.drawSvg(note);
 		this.context.restore();
 
 	},
 
-	noteHalf: function(size, x, y){
-		this.drawNote('svg/note_half.svg', size, x, y);
+/*	noteHalf: function(size, x, y){
+		this.drawNote('svg/note_half.svg', x, y);
 	},
 
 	noteHalfInv: function(size, x, y){
-		this.drawNote('svg/note_half_inv.svg', size, x, y + 35);
+		this.drawNote('svg/note_half_inv.svg', x, y + 35);
 	},
 
 	noteQuarter: function(size, x, y){
-		this.drawNote('svg/note_quarter.svg', size, x, y);
+		this.drawNote('svg/note_quarter.svg', x, y);
 	},
 
 	noteQuarterInv: function(size, x, y){
-		this.drawNote('svg/note_quarter_inv.svg', size, x, y + 35);
+		this.drawNote('svg/note_quarter_inv.svg', x, y + 35);
 	},
 
 	noteWhole: function(size, x, y){
-		this.drawNote('svg/note_whole.svg', size, x, y);
-	},
+		this.drawNote('svg/note_whole.svg', x, y);
+	},*/
 
 
 	drawTimeSignature: function(upper, lower, x, y){
