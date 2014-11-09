@@ -1,14 +1,20 @@
+
+
+
+
+
+
 var song;
 
 function start(){	
 	draw.setCanvas(document.getElementById("songCanvas"));
-	draw.setContext("2d");		
-
+	draw.setContext("2d");	
 	//song		
 	song = new Song();
 
 	var timeSignature = new TimeSignature(4, 4);
 	song.addItem(timeSignature);
+	song.addItem(new Clef('treble'));
 
 	song.addItem(new Note('c', 'half', 4));
 	song.addItem(new Note('d', 'half', 4));
@@ -38,15 +44,48 @@ function start(){
 	song.addItem(new Note('g', 'whole', 5));
 	song.addItem(new Note('a', 'whole', 5));
 
+	song.addItem(new Note('c', 'eighth', 4));
+	song.addItem(new Note('d', 'eighth', 4));
+	song.addItem(new Note('e', 'eighth', 4));
+	song.addItem(new Note('f', 'eighth', 4));
+	song.addItem(new Note('g', 'eighth', 4));
+	song.addItem(new Note('a', 'eighth', 4));
+	song.addItem(new Note('b', 'eighth', 4));
+	song.addItem(new Note('c', 'eighth', 5));
+	song.addItem(new Note('d', 'eighth', 5));
+	song.addItem(new Note('e', 'eighth', 5));
+	song.addItem(new Note('f', 'eighth', 5));
+	song.addItem(new Note('g', 'eighth', 5));
+	song.addItem(new Note('a', 'eighth', 5));
+	song.addItem(new Note('a', 'eighth', 5));
 
-	song.drawSong();
+
 	resizeCanvas();
+}
+
+//this is rediculous
+function canvasClickEvent(x, y) {
+
+	for(var i = 0, len = song.getNumStaves(); i < len; i++) {
+		if(y >= song.getStaff(i).getPosition().getY() && y <= song.getStaff(i).getPosition().getY() + dim.staffPadding + 5 * dim.staffSpacing) {
+			for(var j = 0, items = song.getStaff(i)._items.length; j < items; j++) {
+
+				var itemX = song.getStaff(i)._items[j].getPosition().getX();
+				
+				if(x >= itemX + 15 && x <= itemX + 60) {
+					draw.drawNote('svg/note_half.svg' , itemX + 25,  25 +song.getStaff(i)._items[j].getPosition().getY());
+					break;
+				}
+			}
+		}
+	}
 }
 	
 function resizeCanvas(){
 
-	if(dim.yOffset > dim.songPixelHeight)
+	if(dim.yOffset > dim.songPixelHeight){
 		dim.songPixelHeight = dim.yOffset;
+	}
 
 	dim.yOffset = 0;
 

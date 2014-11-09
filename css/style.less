@@ -4,9 +4,14 @@
 @leftPanelBackground: #212525;
 
 @headerHeight: 60px;
-@footerHeight: 50px;
+@footerHeight: 153px;
 
-@leftPanelWidth: 200px;
+@leftPanelWidth: 140px;
+
+div {
+    /* Testing only */
+  /*  border: 1px solid black;   */
+}
 
 body {
     margin: 0;
@@ -47,7 +52,7 @@ body {
     top: 0;
 }
 
-.header{
+.header {
     font-family: 'Audiowide', cursive;
     font-size: 1.8em;
     background: @headerBackground;
@@ -73,16 +78,24 @@ body {
     overflow-x: auto;   
 }
 
-.menuContainer{
-    margin: 10px;
+.menuContainer {
     padding: 0px;
 }
 
-#canvasDiv{
+.menuSvgGraphic {
+    display: block;
+    margin: auto;   
+}
+
+#canvasDiv {
 	margin: 0px;
 	padding: 0px;
 }
 
-#songCanvas{
+#songCanvas {
 	background: @canvasBackground;
+}
+
+.menuSvgGraphic {
+    height: 100px;
 }

@@ -9,7 +9,7 @@ var draw = {
 			var x = event.pageX - rect.left,
 				y = event.pageY - rect.top;
 
-			//alert(x + ' ' + y) ;
+			canvasClickEvent(x, y);
 
 
 		}, false);
@@ -120,6 +120,14 @@ var draw = {
 		this.context.translate(x, y);
 		this.textBold(upper, 40, 0, 25);
 		this.textBold(lower, 40, 0, 50);
+		this.context.restore();
+
+	},
+
+	drawClef: function(type, x, y){
+		this.context.save();
+		this.context.translate(x, y - (dim.staffSpacing));
+		this.context.drawSvg('svg/clef.svg');
 		this.context.restore();
 
 	}
