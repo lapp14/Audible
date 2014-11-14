@@ -24,7 +24,7 @@ Audible.controller('MenuController', function($scope) {
 	$scope.menuScreen = "none";
 
 	$scope.templates =
-       [ { name: 'template1.html', url: 'menu_main.html'} ];
+       [ { name: 'menu', url: 'menu_main.html'} ];
      $scope.template = $scope.templates[0];
 	
 });

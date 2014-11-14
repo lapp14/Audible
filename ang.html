@@ -18,19 +18,13 @@
 	</head>
 	
 	<body ng-controller="MenuController" onresize="resizeCanvas()">
+
+
 			<div class="header row">
-				Audible
-			</div>
-			
-			<div class="body col left" get-menu-width menu-left-width=menuLeftWidth>
-				<div class="menuContainer"> <!--  ng-include="template.url" -->
-					<div ng-click="menuLeftWidth = 300"> <!--  ng-click="menuScreen = 'guitar'" -->
-						<img src="svg/menu/main_guitar.svg" class="menuSvgGraphic">
-					</div>
-					<img src="svg/menu/main_bass.svg" class="menuSvgGraphic">
-					<img src="svg/menu/main_piano.svg" class="menuSvgGraphic">
-					<img src="svg/menu/main_settings.svg" class="menuSvgGraphic">
-				</div>
+				<h1>Audible</h1>
+			</div>		
+			<div class="body col left" ng-include="template.url" >
+				
 			</div>
 			
 			<div class="body row scroll-y scroll-x" id="canvasDiv" get-canvas-left canvas-left=menuLeftWidth>
