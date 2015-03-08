@@ -6,8 +6,6 @@
 		
 		<link href='http://fonts.googleapis.com/css?family=Lobster|Crimson+Text|Audiowide' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/style.css">
-
-		<script src="js/jquery-1.11.1.js"></script>
 		 
 		<!-- Google canvg -->
 		<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
@@ -17,40 +15,40 @@
 
 	</head>
 	
-	<body ng-controller="MenuController" onresize="resizeCanvas()">
-			<div class="header row">
-				<div class="menuContainer">
-				Audible
-				</div>
-			</div>
-			
-			<div class="body col left">
+	<body onresize="resizeCanvas()">
+            <!--
+            <div class="header row">
+                    <div class="menuContainer">
+                    Audible
+                    </div>
+            </div>
 
-				<div class="menuContainer">
-					<img src="svg/menu/main_guitar.svg" class="menuSvgGraphic">
-					<img src="svg/menu/main_bass.svg" class="menuSvgGraphic">
-					<img src="svg/menu/main_piano.svg" class="menuSvgGraphic">
-					<img src="svg/menu/main_settings.svg" class="menuSvgGraphic">
-				</div>
-			</div>
-			
-			<div class="body row scroll-y scroll-x" id="canvasDiv">
-				<canvas id="songCanvas"></canvas>
-			</div>
-			
-			<div class="footer row">
-				<span id="footerLabel">Footer</span>
-			</div>
+            <div class="body col left">
 
+                    <div class="menuContainer">
+                            <img src="svg/menu/main_guitar.svg" class="menuSvgGraphic">
+                            <img src="svg/menu/main_bass.svg" class="menuSvgGraphic">
+                            <img src="svg/menu/main_piano.svg" class="menuSvgGraphic">
+                            <img src="svg/menu/main_settings.svg" class="menuSvgGraphic">
+                    </div>
+            </div>
+            -->
+            <div class="body row scroll-y scroll-x" id="canvasDiv">
+                    <canvas id="songCanvas"></canvas>
+            
+            </div>
+            <!--
+            <div class="footer row">
+                    <span id="footerLabel">Footer</span>
+            </div>
+            -->
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
-    	<script src="controller.js"></script>
-		<script src="js/core/files.js"></script>
-		<script src="js/core/music.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="js/core/files.js"></script>
+        <script src="js/core/music.js"></script>
 
-		<script>
-			loadOrdered(files, start);			
-		</script>
+        <script>
+            loadOrdered(files, start);			
+        </script>
 </body>
 </html>	
