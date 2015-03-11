@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html ng-app="audible">
+	<head>
+		<title>Audible</title>
+		
+		<link href='http://fonts.googleapis.com/css?family=Lobster|Crimson+Text|Audiowide' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/style.css">
+		 
+		<!-- Google canvg -->
+		<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
+		<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/StackBlur.js"></script>
+		<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
+		
+
+	</head>
+	
+	<body>
+            
+                <canvas id="canv" style="background-color: #c9c0c3"></canvas>
+            
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="js/core/files.js"></script>        
+        
+        <script>            
+            
+            var start = function(){
+                var s = new Staff();
+                s.renderCanvas();
+            };
+        </script>
+        <script>
+            loadOrdered(files, start);	            	
+        </script>
+</body>
+</html>	

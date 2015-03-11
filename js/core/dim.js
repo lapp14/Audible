@@ -16,6 +16,9 @@ var dim = {
 
 	staffPadding: 30,
 	staffPaddingDefault: 30,
+        
+        staffHeight: 160,   // Height of staff canvas
+        staffHeightDefault: 160,
 
 	notesOffStaffSpace: 20, //shifts staff down to leave room for notes above the staff (def: 20)
 

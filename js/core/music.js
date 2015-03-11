@@ -1,19 +1,14 @@
 
-
-
-
-
-
 var song;
 
 function start(){	
 	draw.setCanvas(document.getElementById("songCanvas"));
 	draw.setContext("2d");	
 	//song		
-	song = new Song();
+	//song = new Song();
 
 	var timeSignature = new TimeSignature(4, 4);
-	song.addItem(timeSignature);
+	/*song.addItem(timeSignature);
 	song.addItem(new Clef('treble'));
 
 	song.addItem(new Note('c', 'half', 4));
@@ -58,33 +53,16 @@ function start(){
 	song.addItem(new Note('g', 'eighth', 5));
 	song.addItem(new Note('a', 'eighth', 5));
 	song.addItem(new Note('a', 'eighth', 5));
+*/
 
-
+        dim.songPixelHeight = 18000;
 	resizeCanvas();
-}
-
-//this is rediculous
-function canvasClickEvent(x, y) {
-
-	for(var i = 0, len = song.getNumStaves(); i < len; i++) {
-		if(y >= song.getStaff(i).getPosition().getY() && y <= song.getStaff(i).getPosition().getY() + dim.staffPadding + 5 * dim.staffSpacing) {
-			for(var j = 0, items = song.getStaff(i)._items.length; j < items; j++) {
-
-				var itemX = song.getStaff(i)._items[j].getPosition().getX();
-				
-				if(x >= itemX + 15 && x <= itemX + 60) {
-					draw.drawNote('svg/note_half.svg' , itemX + 25,  25 +song.getStaff(i)._items[j].getPosition().getY());
-					break;
-				}
-			}
-		}
-	}
 }
 	
 function resizeCanvas(){
 
 	if(dim.yOffset > dim.songPixelHeight){
-		dim.songPixelHeight = dim.yOffset;
+            dim.songPixelHeight = dim.yOffset;
 	}
 
 	dim.yOffset = 0;
@@ -92,20 +70,28 @@ function resizeCanvas(){
 	var canvas = draw.getCanvas();
 
 	if(dim.songPixelHeight > $("#canvasDiv").height()) {
-		draw.setCanvasHeight(dim.songPixelHeight);
+            draw.setCanvasHeight(dim.songPixelHeight);
 	} else {
-		draw.setCanvasHeight($("#canvasDiv").height());
+            draw.setCanvasHeight($("#canvasDiv").height());
 	}
 	
 	canvas.width  = canvas.offsetWidth;
 	canvas.height = canvas.offsetHeight;
 
 	//set dimensions
-	dim.canvasHeight = canvas.height
-	dim.canvasWidth = canvas.width
+	dim.canvasHeight = canvas.height;
+	dim.canvasWidth = canvas.width;
 	dim.canvasCenter = canvas.width / 2;
 	
-	song.drawSong();
+	//song.drawSong();
+        var s = new Staff();
+        s.renderCanvas();
+        
+        for(var i = 0; i < 100; i++){
+            draw.getContext().drawImage(s.getCanvas(), 0, i * dim.staffHeight);
+        }
+        
+        
 }
 
 function drawHeader(){
