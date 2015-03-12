@@ -96,7 +96,10 @@ function resizeCanvas(){
 }
 
 function scrollCanvasDiv(){
-    $("#canvasDiv").scrollTop(dim.yOffset - $("#canvasDiv").height());
+    $("#canvasDiv").animate(
+        { scrollTop: dim.yOffset - $("#canvasDiv").height() },
+        'slow'
+    );
 }
 
 function addStaffStandard(){
@@ -108,8 +111,9 @@ function addStaffStandard(){
     
     draw.getContext().drawImage(staffStandard.getBackground().canvas, 0, dim.yOffset);
     
-        //drawing test line
-        staffDrawing.horizontalLine(musicStaves[musicStaves.length - 1].foreground.context, 10, 10, 10 * musicStaves.length);
+        //drawing test lines
+        staffDrawing.horizontalLine(musicStaves[musicStaves.length - 1].foreground.context, 10, 0, 10 * musicStaves.length);
+        staffDrawing.horizontalLine(musicStaves[musicStaves.length - 1].foreground.context, 10, musicStaves[musicStaves.length - 1].foreground.canvas.height,  10 * musicStaves.length);
         
     draw.getContext().drawImage(musicStaves[musicStaves.length - 1].foreground.canvas, 0, dim.yOffset);    
     
