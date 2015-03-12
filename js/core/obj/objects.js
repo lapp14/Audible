@@ -1,14 +1,17 @@
 
+
+
+
 /* 
  *	this should be changed to represent a cleff, treble, bass etc
  *  so that the same notes are placed differently on bass and treble staves
- */
+ *//*
 var Song = (function() {
 	//constructor
 	function Song(){
 		this._items = [];
 		this._musicStaves = [];
-		this._musicStaves[0] = new Staff();
+		this._musicStaves[0] = new StaffStandard();
 		this._offsetIncrement = 120;
 
 		this.calculateOffsetIncrement();
@@ -16,9 +19,9 @@ var Song = (function() {
 
 	Song.prototype.calculateOffsetIncrement = function() {
 		if(settings.displayTab)
-			this._offsetIncrement = 260;
+                    this._offsetIncrement = 260;
 		else
-			this._offsetIncrement = 120;
+                    this._offsetIncrement = 120;
 	};
 
 	Song.prototype.addItem = function(item) {
@@ -147,3 +150,4 @@ var Song = (function() {
 	return Song;
 }());
 
+*/

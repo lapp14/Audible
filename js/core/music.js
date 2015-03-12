@@ -1,9 +1,13 @@
 
-var song;
+var musicStaves = [];
+var staffStandard;
 
 function start(){	
 	draw.setCanvas(document.getElementById("songCanvas"));
 	draw.setContext("2d");	
+        
+        staffStandard = new StaffStandard()
+        
 	//song		
 	//song = new Song();
 
@@ -55,7 +59,7 @@ function start(){
 	song.addItem(new Note('a', 'eighth', 5));
 */
 
-        dim.songPixelHeight = 18000;
+        dim.songPixelHeight = 5000;
 	resizeCanvas();
 }
 	
@@ -83,15 +87,43 @@ function resizeCanvas(){
 	dim.canvasWidth = canvas.width;
 	dim.canvasCenter = canvas.width / 2;
 	
-	//song.drawSong();
-        var s = new Staff();
-        s.renderCanvas();
-        
-        for(var i = 0; i < 100; i++){
-            draw.getContext().drawImage(s.getCanvas(), 0, i * dim.staffHeight);
-        }
+	
+        staffStandard.renderBackground();    
+        drawHeader();
+        addStaffStandard();              
         
         
+}
+
+function scrollCanvasDiv(){
+    $("#canvasDiv").scrollTop(dim.yOffset - $("#canvasDiv").height());
+}
+
+function addStaffStandard(){
+    //each element has canvas, context, position(x, y)
+    var foreground = staffStandard.getForeground();
+    
+    musicStaves[musicStaves.length] = { foreground: foreground,
+                                        position: dim.yOffset };
+    
+    draw.getContext().drawImage(staffStandard.getBackground().canvas, 0, dim.yOffset);
+    
+        //drawing test line
+        staffDrawing.horizontalLine(musicStaves[musicStaves.length - 1].foreground.context, 10, 10, 10 * musicStaves.length);
+        
+    draw.getContext().drawImage(musicStaves[musicStaves.length - 1].foreground.canvas, 0, dim.yOffset);    
+    
+    dim.yOffset += dim.staffHeight;
+    scrollCanvasDiv();    
+}
+
+function removeStaffStandard(){
+    if(musicStaves.length > 0){
+        var staff = musicStaves.pop();    
+        draw.getContext().clearRect(0, staff.position, staff.foreground.canvas.width, staff.foreground.canvas.height);
+        dim.yOffset -= dim.staffHeight;
+        scrollCanvasDiv();    
+    }
 }
 
 function drawHeader(){

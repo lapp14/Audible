@@ -1,48 +1,55 @@
-var Staff = (function() {
+var StaffStandard = (function() {
+        
+    var background = {};
     
-    var canvas, foreground, context;
-    
-    function Staff(){
+    function StaffStandard(){
         
     };
     
-    Staff.prototype.renderCanvas = function(){
+    StaffStandard.prototype.renderBackground = function(){
         var width = dim.canvasWidth;
         var height = dim.staffHeight;
-        canvas = document.createElement("canvas");
-        foreground = document.createElement("canvas");
+        background.canvas = document.createElement("canvas");
         
         //stafftest.html
-       // canvas = document.getElementById("canv");
+        // canvas = document.getElementById("canv");
         
-        context = canvas.getContext("2d");
-        canvas.height = height;
-        canvas.width = width;
-        canvas.style.height = height + 'px';
-        canvas.style.width = width + 'px';
-                
+        background.context = background.canvas.getContext("2d");
+        background.canvas.height = height;
+        background.canvas.width = width;
+        background.canvas.style.height = height + 'px';
+        background.canvas.style.width = width + 'px';
+        
         var middle = height / 2;
         var length = width - 2 * dim.getSideMargin();
         
-        horizontalLine(dim.getSideMargin(), middle, length);
-        horizontalLine(dim.getSideMargin(), middle + dim.staffSpacing, length);
-        horizontalLine(dim.getSideMargin(), middle + 2 * dim.staffSpacing, length);
-        horizontalLine(dim.getSideMargin(), middle - dim.staffSpacing, length);
-        horizontalLine(dim.getSideMargin(), middle - 2 * dim.staffSpacing, length);
-    };
-    
-    var horizontalLine = function(x, y, length){
-        context.beginPath();
-        context.moveTo(x, y);
-        context.lineTo(x + length, y);
-        context.stroke();
+        staffDrawing.horizontalLine(background.context, dim.getSideMargin(), middle, length);
+        staffDrawing.horizontalLine(background.context, dim.getSideMargin(), middle + dim.staffSpacing, length);
+        staffDrawing.horizontalLine(background.context, dim.getSideMargin(), middle + 2 * dim.staffSpacing, length);
+        staffDrawing.horizontalLine(background.context, dim.getSideMargin(), middle - dim.staffSpacing, length);
+        staffDrawing.horizontalLine(background.context, dim.getSideMargin(), middle - 2 * dim.staffSpacing, length);
     };
         
-    Staff.prototype.getCanvas = function(){
-        return canvas;
+    StaffStandard.prototype.getBackground = function(){
+        return background;
     };
     
-    return Staff;
+    StaffStandard.prototype.getForeground = function(){
+        var foreground = {};
+        var width = dim.canvasWidth;
+        var height = dim.staffHeight;
+        
+        foreground.canvas = document.createElement("canvas");
+        foreground.context = foreground.canvas.getContext("2d");
+        foreground.canvas.height = height;
+        foreground.canvas.width = width;
+        foreground.canvas.style.height = height + 'px';
+        foreground.canvas.style.width = width + 'px';
+        
+        return foreground;
+    };
+        
+    return StaffStandard;
 }());
     
 

@@ -4,7 +4,7 @@ var draw = {
 		canvas.style.height = '1000px';
 		this.canvas = canvas;
 
-		this.canvas.addEventListener('click', function(event){
+		/*this.canvas.addEventListener('click', function(event){
 			var rect = canvas.getBoundingClientRect();
 			var x = event.pageX - rect.left,
 				y = event.pageY - rect.top;
@@ -12,7 +12,7 @@ var draw = {
 			canvasClickEvent(x, y);
 
 
-		}, false);
+		}, false);*/
 
 		return this.canvas;
 	},
@@ -131,4 +131,14 @@ var draw = {
 		this.context.restore();
 
 	}
+};
+
+
+var staffDrawing = {
+    horizontalLine: function(context, x, y, length){
+        context.beginPath();
+        context.moveTo(x, y);
+        context.lineTo(x + length, y);
+        context.stroke();
+    }
 };
