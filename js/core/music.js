@@ -1,16 +1,10 @@
 
 var musicStaves = [];
-var staffStandard;
 
 function start(){	
 	draw.setCanvas(document.getElementById("songCanvas"));
 	draw.setContext("2d");	
         
-        staffStandard = new StaffStandard()
-        
-	//song		
-	//song = new Song();
-
 	var timeSignature = new TimeSignature(4, 4);
 	/*song.addItem(timeSignature);
 	song.addItem(new Clef('treble'));
@@ -58,41 +52,18 @@ function start(){
 	song.addItem(new Note('a', 'eighth', 5));
 	song.addItem(new Note('a', 'eighth', 5));
 */
-
-        dim.songPixelHeight = 5000;
-	resizeCanvas();
+    resizeCanvas();
+    addStaffStandard();
+    addStaffStandard();
+    addStaffStandard();
 }
 	
+//switch to call draw.resizeCanvas() after testing
 function resizeCanvas(){
+    draw.resizeCanvas();
 
-	if(dim.yOffset > dim.songPixelHeight){
-            dim.songPixelHeight = dim.yOffset;
-	}
-
-	dim.yOffset = 0;
-
-	var canvas = draw.getCanvas();
-
-	if(dim.songPixelHeight > $("#canvasDiv").height()) {
-            draw.setCanvasHeight(dim.songPixelHeight);
-	} else {
-            draw.setCanvasHeight($("#canvasDiv").height());
-	}
-	
-	canvas.width  = canvas.offsetWidth;
-	canvas.height = canvas.offsetHeight;
-
-	//set dimensions
-	dim.canvasHeight = canvas.height;
-	dim.canvasWidth = canvas.width;
-	dim.canvasCenter = canvas.width / 2;
-	
-	
-        staffStandard.renderBackground();    
-        drawHeader();
-        addStaffStandard();              
-        
-        
+    StaffStandard.renderBackground(); 
+    drawSong();
 }
 
 function scrollCanvasDiv(){
@@ -102,22 +73,31 @@ function scrollCanvasDiv(){
     );
 }
 
+function drawSong() {  
+    console.log('drawsong: yOffset ' + dim.yOffset);
+    //draw staves
+    for(var i = 0; i < musicStaves.length; i++){
+        draw.getContext().drawImage(StaffStandard.getBackground().canvas, 0, musicStaves[i].position);
+    
+        //drawing test lines
+        staffDrawing.horizontalLine(musicStaves[i].foreground.context, 10, 0, 10 + 10 * i);
+        staffDrawing.horizontalLine(musicStaves[i].foreground.context, 10, musicStaves[i].foreground.canvas.height, 10 + 10 * i);
+        
+        draw.getContext().drawImage(musicStaves[i].foreground.canvas, 0, musicStaves[i].position); 
+    }
+}
+
 function addStaffStandard(){
     //each element has canvas, context, position(x, y)
-    var foreground = staffStandard.getForeground();
+    var foreground = StaffStandard.getForeground();
     
     musicStaves[musicStaves.length] = { foreground: foreground,
                                         position: dim.yOffset };
     
-    draw.getContext().drawImage(staffStandard.getBackground().canvas, 0, dim.yOffset);
-    
-        //drawing test lines
-        staffDrawing.horizontalLine(musicStaves[musicStaves.length - 1].foreground.context, 10, 0, 10 * musicStaves.length);
-        staffDrawing.horizontalLine(musicStaves[musicStaves.length - 1].foreground.context, 10, musicStaves[musicStaves.length - 1].foreground.canvas.height,  10 * musicStaves.length);
-        
-    draw.getContext().drawImage(musicStaves[musicStaves.length - 1].foreground.canvas, 0, dim.yOffset);    
     
     dim.yOffset += dim.staffHeight;
+    draw.setCanvasHeight();
+    drawSong();
     scrollCanvasDiv();    
 }
 
@@ -126,18 +106,25 @@ function removeStaffStandard(){
         var staff = musicStaves.pop();    
         draw.getContext().clearRect(0, staff.position, staff.foreground.canvas.width, staff.foreground.canvas.height);
         dim.yOffset -= dim.staffHeight;
-        scrollCanvasDiv();    
+                
+        scrollCanvasDiv(); 
+        draw.setCanvasHeight();
+        drawSong();   
     }
 }
 
+/**
+ * CHANGE THIS TO PRE RENDER ON A CANVAS NOT DRAW TEXT DIRECTLY
+ * @returns {undefined}
+ */
 function drawHeader(){
-	dim.yOffset += 40;
-	draw.textCenter('Song Title', 30, dim.canvasCenter, dim.yOffset);
-	dim.yOffset += 28
-	draw.textCenter('Artist', 18, dim.canvasCenter, dim.yOffset);
-	dim.yOffset += 28
-	draw.textCenter('Album', 18, dim.canvasCenter, dim.yOffset);
-	dim.yOffset += 18;
+	dim.yOffset += fonts.songTitleSize;
+	draw.textCenter('Song Title', fonts.songTitleSize, dim.canvasCenter, dim.yOffset);
+	dim.yOffset += fonts.songSubtitleSize + 10;
+	draw.textCenter('Artist', fonts.songSubtitleSize, dim.canvasCenter, dim.yOffset);
+	dim.yOffset += fonts.songNoteSize + 10;
+	draw.textCenter('Album', fonts.songNoteSize, dim.canvasCenter, dim.yOffset);
+        dim.yOffset += dim.marginSongTop;
 }
 
 function drawTrebleCleff(x, y){

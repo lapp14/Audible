@@ -1,97 +1,114 @@
 var draw = {
 	setCanvas: function(canvas){
-		canvas.style.width  = '100%';
-		canvas.style.height = '1000px';
-		this.canvas = canvas;
+            this.canvas = canvas;
+            this.canvas.style.width  = '100%';
+            this.canvas.style.height = '1000px';
 
-		/*this.canvas.addEventListener('click', function(event){
-			var rect = canvas.getBoundingClientRect();
-			var x = event.pageX - rect.left,
-				y = event.pageY - rect.top;
+            /*this.canvas.addEventListener('click', function(event){
+                    var rect = canvas.getBoundingClientRect();
+                    var x = event.pageX - rect.left,
+                            y = event.pageY - rect.top;
 
-			canvasClickEvent(x, y);
+                    canvasClickEvent(x, y);
 
 
-		}, false);*/
+            }, false);*/
 
-		return this.canvas;
+            return this.canvas;
 	},
 
-	setCanvasHeight: function(size){
-		this.canvas.style.height = size + 'px';
+	setCanvasHeight: function(){
+            dim.canvasHeight = $("#canvasDiv").height() > dim.yOffset ? $("#canvasDiv").height() : dim.yOffset;
+            
+            console.log($("#canvasDiv").height() + ' y' + dim.yOffset + ' dim.canvHight' + dim.canvasHeight);
+            this.canvas.width  = this.canvas.offsetWidth;
+            this.canvas.height = dim.canvasHeight;
+            this.canvas.style.height = dim.canvasHeight + 'px';
+            
 	},
+        
+        resizeCanvas: function(){
+            console.log("resize canvas");
+            dim.containerHeight = $("#canvasDiv").height();
+            dim.containerWidth = $("#canvasDiv").width();
+            this.setCanvasHeight();	            
+
+            //set dimensions
+            dim.canvasHeight = this.canvas.height;
+            dim.canvasWidth = this.canvas.width;
+            dim.canvasCenter = this.canvas.width / 2;	
+        },
 	
 	getCanvas: function(){
-		return this.canvas;
+            return this.canvas;
 	},
 
 	setContext: function(canvasType){
-		this.context = this.canvas.getContext(canvasType);
-		return this.context;
+            this.context = this.canvas.getContext(canvasType);
+            return this.context;
 	},
 
 	getContext: function(){
-		return this.context;
+            return this.context;
 	},
 	
 	line: function(x1, y1, x2, y2){
-		this.context.beginPath();
-		this.context.moveTo(x1, y1);
-		this.context.lineTo(x2, y2);
-		this.context.stroke();
-		return this;
+            this.context.beginPath();
+            this.context.moveTo(x1, y1);
+            this.context.lineTo(x2, y2);
+            this.context.stroke();
+            return this;
 	},
 	
 	horizontalLine: function(x, y, length){
-		this.context.beginPath();
-		this.context.moveTo(x, y);
-		this.context.lineTo(x, y + length);
-		this.context.stroke();
-		return this;
+            this.context.beginPath();
+            this.context.moveTo(x, y);
+            this.context.lineTo(x, y + length);
+            this.context.stroke();
+            return this;
 	},
 
 	textCenter: function(text, size, x, y){
-		this.context.textAlign = 'center';
-		this.context.font = size + 'px Crimson Text, serif';
-		this.context.fillText(text, x, y);
+            this.context.textAlign = 'center';
+            this.context.font = size + 'px Crimson Text, serif';
+            this.context.fillText(text, x, y);
 	},
 
 	textMusicCenter: function(text, size, x, y){
-		this.context.textAlign = 'center';
-		this.context.font = size + 'px Lassus, serif';
-		this.context.fillText(text, x, y);
+            this.context.textAlign = 'center';
+            this.context.font = size + 'px Lassus, serif';
+            this.context.fillText(text, x, y);
 	},
 
 	textBold: function(text, size, x, y){
-		this.context.textAlign = 'left';
-		this.context.font = 'bold ' + size + 'px Crimson Text, serif';
-		this.context.fillText(text, x, y);
+            this.context.textAlign = 'left';
+            this.context.font = 'bold ' + size + 'px Crimson Text, serif';
+            this.context.fillText(text, x, y);
 	},
 
 	textBoldCenter: function(text, size, x, y){
-		this.context.textAlign = 'center';
-		this.context.font = 'bold ' + size + 'px Crimson Text, serif';
-		this.context.fillText(text, x, y);
+            this.context.textAlign = 'center';
+            this.context.font = 'bold ' + size + 'px Crimson Text, serif';
+            this.context.fillText(text, x, y);
 	},
 
 	translate: function(x, y){
-		this.context.translate(x, y);
+            this.context.translate(x, y);
 	},
 
 	drawNote: function(note, x, y){
-		var rect = this.canvas.getBoundingClientRect();
-		this.context.save();
-		this.context.scale(dim.staffSpacing / 12, dim.staffSpacing / 12);
-		
-		if(note.indexOf('whole') > -1 || note.indexOf('_inv') > -1) {
-			this.context.translate(x, y - 5);
-		} else { 
-			this.context.translate(x, y - 39);
-		}
+            var rect = this.canvas.getBoundingClientRect();
+            this.context.save();
+            this.context.scale(dim.staffSpacing / 12, dim.staffSpacing / 12);
 
-		this.context.drawSvg(note);
-		this.context.restore();
+            if(note.indexOf('whole') > -1 || note.indexOf('_inv') > -1) {
+                    this.context.translate(x, y - 5);
+            } else { 
+                    this.context.translate(x, y - 39);
+            }
 
+            this.context.drawSvg(note);
+            this.context.restore();
 	},
 
 /*	noteHalf: function(size, x, y){
